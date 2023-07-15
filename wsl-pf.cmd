@@ -2,7 +2,7 @@
 SETLOCAL
 
 :: Check admin
-NET FILE 1>NUL 2>NUL & IF ERRORLEVEL 1 (ECHO This script must be run as administrator. & EXIT /D)
+NET FILE 1>NUL 2>NUL & IF ERRORLEVEL 1 (ECHO This script must be run as administrator. & ECHO: & GOTO usage)
 
 SET CMD=%~1
 IF "%CMD%" == "" (
@@ -60,5 +60,5 @@ GOTO :eof
 
 :usage
 ECHO WSL Port Forwarding
-ECHO Usage: wsl-pf ^<add^|remove^> ^<port^> [-i ^<ip_address^> | -d ^<wsl_distro_name^>]
+ECHO Usage: wsl-pf ^<add^|remove^> ^<port^> ^[-i ^<ip_address^> ^| -d ^<wsl_distro_name^>^]
 EXIT /D
